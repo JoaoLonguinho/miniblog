@@ -1,11 +1,11 @@
 import styles from "./Footer.module.css"
 
-
 const Footer = () => {
   return (
-    <div>
-      Rodapé
-    </div>
+    <footer className={styles.footer}>
+      <h3>Escreva o que der na telha</h3>
+      <p>MiniBlog Desenvolvido por Longuinho &copy; 2025</p>
+    </footer>
   )
 }
 
