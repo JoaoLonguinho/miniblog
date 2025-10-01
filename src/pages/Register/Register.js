@@ -19,7 +19,7 @@ const Register = () => {
       email,
       password
     }
-    if(password != confirmPassword){
+    if(password !== confirmPassword){
       setError("As senhas não coincidem")
       return
     }
