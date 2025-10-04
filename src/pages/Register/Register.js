@@ -1,3 +1,4 @@
+import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./Register.module.css"
 
 import { useState, useEffect } from "react"
@@ -9,7 +10,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const {createUser, error: authError, loading} = useAuthentication();
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setError(""); // Após envio de form zera os erros
@@ -23,9 +26,19 @@ const Register = () => {
       setError("As senhas não coincidem")
       return
     }
-    console.log(user)
+
+    const res = await createUser(user)
+
+    console.log(res)
   }
 
+  useEffect(() => {
+    if(authError){
+      setError(authError)
+    }
+
+  }, [authError]);
+  
   return (
     <div>
       <h1>Efetue o registro para criar seus próprios posts</h1>
