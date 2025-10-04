@@ -59,7 +59,9 @@ export const useAuthentication = () => {
             } else (
                 systemErrorMessage = "Ocorreu um erro durante o cadastro"
             )
+            setLoading(false)
             setError(systemErrorMessage)
+
         }
 
     };
